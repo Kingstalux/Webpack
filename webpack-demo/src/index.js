@@ -12,7 +12,7 @@ const tasks = [
     description: 'do the laundry',
     completed: false,
     index: 2,
-  },
+  }
 
   {
     description: 'clean the windows',
