@@ -1,14 +1,29 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
+const tasks = [
+  {
+    description: 'wash the dishes',
+    completed: false,
+    index: 1,
+  },
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
+  {
+    description: 'do the laundry',
+    completed: false,
+    index: 2,
+  },
 
-  return element;
-}
+  {
+    description: 'wash the car',
+    completed: false,
+    index: 3,
+  },
+];
 
-document.body.appendChild(component());
+tasks.forEach((element) => {
+  const para = document.createElement('p');
+  para.innerText = element.description;
+  const container = document.getElementById('list-container');
+  container.appendChild(para);
+});
