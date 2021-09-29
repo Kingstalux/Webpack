@@ -1,7 +1,69 @@
 h1 {
-  color: rgb(75, 70, 70);
+  color: #959595;
+  font-size: 1.5em;
 }
 
 p {
-  color: grey;
+  color: #888;
+  font-size: 1.2em;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f0f5;
+}
+
+.body {
+  width: 50vw;
+  background-color: white;
+  border: 0.1em solid #e6e6e6;
+  box-shadow: 0.5em 0.5em 0.5em #e6e6e6;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+}
+
+.new-item {
+  margin: 1em;
+  border: none;
+  width: 45vw;
+  height: 1em;
+  font-size: 1.2em;
+  color: #b5b5b5;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+}
+
+.div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.div p {
+  margin-left: 1em;
+}
+
+.button {
+  width: 49vw;
+  border: none;
+  color: #b5b5b5;
+  background-color: white;
+  padding: 1em;
+  font-size: 1.2em;
+}
+
+input:focus {
+  outline: none;
 }
