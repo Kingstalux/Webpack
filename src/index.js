@@ -1,28 +1,39 @@
 // import _ from 'lodash';
 import './style.css';
-import { status } from'./script.js';
+import { status } from './script.js';
 
-const tasks = [
+let tasks = [
   {
     description: 'wash the dishes',
     completed: false,
-    index: 1,
+    index: 0,
   },
 
   {
     description: 'do the laundry',
     completed: false,
-    index: 2,
+    index: 1,
   },
 
   {
     description: 'wash the car',
     completed: false,
-    index: 3,
+    index: 2,
   },
 ];
 
-tasks.forEach((element) => {
+// localStorage.setItem('tasks', JSON.stringify(tasks))
+let taskList = JSON.parse(localStorage.getItem('tasks'))
+
+if (taskList === null ) {
+  localStorage.setItem('tasks', JSON.stringify(tasks))
+  taskList = JSON.parse(localStorage.getItem('tasks'))
+} else {
+  taskList = JSON.parse(localStorage.getItem('tasks'))
+}
+
+
+taskList.forEach((element) => {
   const div = document.createElement('div');
   div.className = 'task';
   const container = document.getElementById('list-container');
@@ -32,27 +43,28 @@ tasks.forEach((element) => {
   div.appendChild(div2);
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
-  checkbox.className = 'check'
+  checkbox.className = 'check';
   div2.appendChild(checkbox);
   const para = document.createElement('p');
   para.innerText = element.description;
   div2.appendChild(para);
   checkbox.addEventListener('click', () => {
-    status(checkbox, element)
-    if (checkbox.checked == true) {
-      para.classList.add('cancel')
-      // element.completed = true
-      console.log(element);
+    status(checkbox, element, tasks);
+    if (checkbox.checked === true) {
+      para.classList.add('cancel');
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+      taskList = JSON.parse(localStorage.getItem('tasks'))
+
     } else {
-      para.classList.remove('cancel')
-      // element.completed = false
-      console.log(element);
+      para.classList.remove('cancel');
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+      taskList = JSON.parse(localStorage.getItem('tasks'))
     }
-  })
+    return taskList
+  });
   const icon = document.createElement('i');
   icon.className = 'ellipsis vertical icon';
   div.appendChild(icon);
   const hr = document.createElement('hr');
   container.appendChild(hr);
 });
-
