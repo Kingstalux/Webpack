@@ -1,7 +1,7 @@
-.hello {
-  color: red;
+p {
+  color: grey;
 }
 
-body {
-  background-color: bisque;
+h1 {
+  color: rgb(73, 70, 70);
 }
