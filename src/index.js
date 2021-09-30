@@ -1,4 +1,4 @@
-// import _ from 'lodash';
+import _ from 'lodash';
 import './style.css';
 import { status } from './script.js';
 
@@ -22,16 +22,11 @@ let tasks = [
   },
 ];
 
-// localStorage.setItem('tasks', JSON.stringify(tasks))
 let taskList = JSON.parse(localStorage.getItem('tasks'))
 
 if (taskList === null ) {
-  localStorage.setItem('tasks', JSON.stringify(tasks))
-  taskList = JSON.parse(localStorage.getItem('tasks'))
-} else {
-  taskList = JSON.parse(localStorage.getItem('tasks'))
+  taskList = [...tasks]
 }
-
 
 taskList.forEach((element) => {
   const div = document.createElement('div');
@@ -49,19 +44,24 @@ taskList.forEach((element) => {
   para.innerText = element.description;
   div2.appendChild(para);
   checkbox.addEventListener('click', () => {
-    status(checkbox, element, tasks);
+    status(checkbox, element, taskList);
     if (checkbox.checked === true) {
       para.classList.add('cancel');
-      localStorage.setItem('tasks', JSON.stringify(tasks))
+      localStorage.setItem('tasks', JSON.stringify(taskList))
       taskList = JSON.parse(localStorage.getItem('tasks'))
-
     } else {
       para.classList.remove('cancel');
-      localStorage.setItem('tasks', JSON.stringify(tasks))
+      localStorage.setItem('tasks', JSON.stringify(taskList))
       taskList = JSON.parse(localStorage.getItem('tasks'))
     }
-    return taskList
   });
+  if (element.completed === true) {
+    para.classList.add('cancel');
+    checkbox.checked = true
+  } else {
+    para.classList.remove('cancel');
+    checkbox.checked = false
+  }
   const icon = document.createElement('i');
   icon.className = 'ellipsis vertical icon';
   div.appendChild(icon);
