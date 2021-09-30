@@ -1,7 +1,9 @@
 // import _ from 'lodash';
 import './style.css';
 import status from './script.js';
-import addItem from './script2.js';
+import { addItem } from './script2.js';
+import { editItem } from './script2.js';
+import { removeItem } from './script2.js';
 
 let taskList = JSON.parse(localStorage.getItem('tasks'));
 
@@ -9,8 +11,7 @@ if (taskList === null) {
   taskList = [];
 }
 
-const display = () => {
-  taskList.forEach((element) => {
+const display = (element) => {
     const div = document.createElement('div');
     div.className = 'task';
     const container = document.getElementById('list-container');
@@ -47,26 +48,43 @@ const display = () => {
     const icon = document.createElement('i');
     icon.className = 'ellipsis vertical icon check2';
     icon.addEventListener('click', () => {
-      console.log('yess');
+      editItem(spam, spam2)
     })
-    div.appendChild(icon);
+    const spam = document.createElement('spam')
+    spam.appendChild(icon)
+    div.appendChild(spam);
+
+    const icon2 = document.createElement('i');
+    icon2.className = 'trash alternate outline icon check';
+    icon2.addEventListener('click', () => {
+      removeItem(element, taskList)
+      localStorage.setItem('tasks', JSON.stringify(taskList));
+      taskList = JSON.parse(localStorage.getItem('tasks'));
+      div.remove()
+      hr.remove()
+    })
+    const spam2 = document.createElement('spam')
+    spam2.className = 'hidden'
+    spam2.appendChild(icon2)
+    div.appendChild(spam2);
     const hr = document.createElement('hr');
     container.appendChild(hr);
-  });
 }
 
-display()
+taskList.forEach(element => {
+  display(element)
+});
 
-const newItem = document.querySelector('.new-item')
+document.getElementById('enter-icon').addEventListener('click', () => {
+  addItem(taskList, display)
+  document.querySelector('.new-item').value = ''
+  localStorage.setItem('tasks', JSON.stringify(taskList));
+  taskList = JSON.parse(localStorage.getItem('tasks'));
+})
 
-newItem.addEventListener('keyup', function(event) {
+document.querySelector('.new-item').addEventListener('keyup', function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
-    addItem(taskList)
-    document.querySelector('.new-item').value = ''
-    localStorage.setItem('tasks', JSON.stringify(taskList));
-    taskList = JSON.parse(localStorage.getItem('tasks'));
-    window.location.reload()
-    // document.getElementById("myBtn").click();
+    document.getElementById('enter-icon').click()
    }
 })

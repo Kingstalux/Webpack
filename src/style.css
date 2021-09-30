@@ -17,6 +17,10 @@ p {
   transform: rotate(90deg);
 }
 
+.rotate:hover {
+  cursor: pointer;
+}
+
 body {
   display: flex;
   align-items: center;
@@ -91,4 +95,8 @@ input:checked::after {
 
 input:focus {
   outline: none;
+}
+
+.hidden {
+  display: none;
 }

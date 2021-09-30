@@ -1,14 +1,24 @@
-export default function addItem (taskList) {
+export function addItem (taskList, display) {
     const newItem = document.querySelector('.new-item').value
     let i = taskList.length
-    const itemObj = {
+    const element = {
         description: newItem,
         completed: false,
         index: i,
     }
-    taskList.push(itemObj)
+    taskList.push(element)
+    display(element)
 }
 
-// export default function editItem () {
+export function editItem (spam, spam2) {
+    spam.classList.add('hidden')
+    spam2.classList.remove('hidden')
+}
 
-// }
+export function removeItem (element, taskList) {
+    let i = element.index
+    taskList.splice(i, 1)
+    taskList.forEach(element => {
+        element.index = taskList.indexOf(element)
+    });
+}
