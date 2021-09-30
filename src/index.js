@@ -25,7 +25,8 @@ const tasks = [
 let taskList = JSON.parse(localStorage.getItem('tasks'));
 
 if (taskList === null) {
-  taskList = [...tasks];
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  taskList = JSON.parse(localStorage.getItem('tasks'));
 }
 
 taskList.forEach((element) => {
@@ -43,7 +44,7 @@ taskList.forEach((element) => {
   const para = document.createElement('p');
   para.innerText = element.description;
   div2.appendChild(para);
-  checkbox.addEventListener('click', () => {
+  checkbox.addEventListener('change', () => {
     status(checkbox, element, taskList);
     if (checkbox.checked === true) {
       para.classList.add('cancel');
