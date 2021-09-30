@@ -1,8 +1,8 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import './style.css';
-import { status } from './script.js';
+import status from './script.js';
 
-let tasks = [
+const tasks = [
   {
     description: 'wash the dishes',
     completed: false,
@@ -22,10 +22,10 @@ let tasks = [
   },
 ];
 
-let taskList = JSON.parse(localStorage.getItem('tasks'))
+let taskList = JSON.parse(localStorage.getItem('tasks'));
 
-if (taskList === null ) {
-  taskList = [...tasks]
+if (taskList === null) {
+  taskList = [...tasks];
 }
 
 taskList.forEach((element) => {
@@ -47,20 +47,20 @@ taskList.forEach((element) => {
     status(checkbox, element, taskList);
     if (checkbox.checked === true) {
       para.classList.add('cancel');
-      localStorage.setItem('tasks', JSON.stringify(taskList))
-      taskList = JSON.parse(localStorage.getItem('tasks'))
+      localStorage.setItem('tasks', JSON.stringify(taskList));
+      taskList = JSON.parse(localStorage.getItem('tasks'));
     } else {
       para.classList.remove('cancel');
-      localStorage.setItem('tasks', JSON.stringify(taskList))
-      taskList = JSON.parse(localStorage.getItem('tasks'))
+      localStorage.setItem('tasks', JSON.stringify(taskList));
+      taskList = JSON.parse(localStorage.getItem('tasks'));
     }
   });
   if (element.completed === true) {
     para.classList.add('cancel');
-    checkbox.checked = true
+    checkbox.checked = true;
   } else {
     para.classList.remove('cancel');
-    checkbox.checked = false
+    checkbox.checked = false;
   }
   const icon = document.createElement('i');
   icon.className = 'ellipsis vertical icon';
