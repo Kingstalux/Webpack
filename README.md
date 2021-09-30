@@ -3,7 +3,7 @@
 
 # To Do List
 
->In this project, I built a simple HTML list of To Do tasks. The list will be styled according to the specifications in the given template. This simple web page was built using webpack and served by a webpack dev server. For now I have just poppulated the HTML with an array of tasks from Javascript which is rendered dynamically on reload. 
+>In this project, I built a simple HTML list of To Do tasks. The list was styled according to the specifications in the given template. This simple web page was built using webpack and served by a webpack dev server. I have poppulated the HTML with an array of tasks from Javascript which is rendered dynamically on reload. Next I added some functionality to the application to make it interactive. The user will be able to mark task completion by selecting the corresponding checkbox (or undo it by unchecking the checkbox). The updated tasks list will be stored in local storage, so the user gets the correct list values after the page reloads.
 
 ## Built With
 
@@ -11,6 +11,7 @@
 - CSS
 - npm
 - Javascript
+- webpack
 
 ## Demo
 
