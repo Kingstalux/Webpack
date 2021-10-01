@@ -14,6 +14,7 @@ if (taskList === null) {
 const display = (element) => {
     const div = document.createElement('div');
     div.className = 'task';
+    div.id = element.index
     const container = document.getElementById('list-container');
     container.appendChild(div);
     const div2 = document.createElement('div');
@@ -47,12 +48,35 @@ const display = (element) => {
     }
     const icon = document.createElement('i');
     icon.className = 'ellipsis vertical icon check2';
-    icon.addEventListener('click', () => {
-      editItem(spam, spam2)
-    })
+
     const spam = document.createElement('spam')
     spam.appendChild(icon)
     div.appendChild(spam);
+
+    const input = document.createElement('input')
+    input.type = 'text'
+    input.className = 'edit-item hidden'
+    div.appendChild(input)
+
+
+    icon.addEventListener('click', () => {
+      editItem(spam, spam2, input, para, element)
+    })
+
+    input.addEventListener('keyup', function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        element.description = input.value
+        // para.innerText = element.description
+        localStorage.setItem('tasks', JSON.stringify(taskList));
+        taskList = JSON.parse(localStorage.getItem('tasks')); 
+        window.location.reload()
+        // spam.classList.remove('hidden')
+        // spam2.classList.add('hidden')
+        // input.classList.add('hidden')
+        // para.classList.remove('hidden')
+       }
+    })   
 
     const icon2 = document.createElement('i');
     icon2.className = 'trash alternate outline icon check';
@@ -62,6 +86,9 @@ const display = (element) => {
       taskList = JSON.parse(localStorage.getItem('tasks'));
       div.remove()
       hr.remove()
+      // taskList.forEach(element => {
+      //   div.id = element.index
+      // });
     })
     const spam2 = document.createElement('spam')
     spam2.className = 'hidden'
@@ -88,3 +115,4 @@ document.querySelector('.new-item').addEventListener('keyup', function(event) {
     document.getElementById('enter-icon').click()
    }
 })
+

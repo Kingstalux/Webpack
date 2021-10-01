@@ -10,9 +10,13 @@ export function addItem (taskList, display) {
     display(element)
 }
 
-export function editItem (spam, spam2) {
+export function editItem (spam, spam2, input, para, element) {
     spam.classList.add('hidden')
     spam2.classList.remove('hidden')
+    input.classList.remove('hidden')
+    para.classList.add('hidden')
+    input.value = element.description
+    // document.querySelector('.task').classList.add('color')
 }
 
 export function removeItem (element, taskList) {
@@ -21,4 +25,5 @@ export function removeItem (element, taskList) {
     taskList.forEach(element => {
         element.index = taskList.indexOf(element)
     });
+    
 }

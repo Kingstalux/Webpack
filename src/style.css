@@ -51,11 +51,24 @@ body {
   color: rgb(95, 93, 93);
 }
 
+.edit-item {
+  margin: 0.18em 0.9em;
+  border: none;
+  width: 43.9vw;
+  height: 1em;
+  font-size: 1.2em;
+  color: rgb(95, 93, 93);
+}
+
 .task {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1em;
+}
+
+.color {
+  background-color: yellow;
 }
 
 input:checked::after {
