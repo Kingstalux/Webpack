@@ -71,9 +71,6 @@ const display = (element) => {
 
   icon2.addEventListener('click', () => {
     removeItem(element, taskList);
-    localStorage.setItem('tasks', JSON.stringify(taskList));
-    taskList = JSON.parse(localStorage.getItem('tasks'));
-    window.location.reload();
   });
 };
 

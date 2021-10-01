@@ -4,7 +4,7 @@ export function addItem(taskList, display) {
   const element = {
     description: newItem,
     completed: false,
-    index: i,
+    index: i + 1,
   };
   taskList.push(element);
   display(element);
@@ -35,21 +35,20 @@ export function editItem(spam, spam2, input, para, element, taskList) {
 
 export function removeItem(element, taskList) {
   const i = element.index;
-  taskList.splice(i, 1);
+  taskList = taskList.filter((element) => element.index !== i);
   taskList.forEach((element) => {
-    element.index = taskList.indexOf(element);
+    const int = taskList.indexOf(element);
+    element.index = int + 1;
   });
+  localStorage.setItem('tasks', JSON.stringify(taskList));
+  taskList = JSON.parse(localStorage.getItem('tasks'));
+  window.location.reload();
 }
 
 export function clearCompleted(taskList) {
-  taskList = taskList.filter((element) => {
-    if (element.completed !== true) {
-      return true;
-    }
-    return false;
-  });
+  taskList = taskList.filter((element) => element.completed !== true);
   taskList.forEach((element) => {
-    element.index = taskList.indexOf(element);
+    element.index = taskList.indexOf(element) + 1;
   });
   localStorage.setItem('tasks', JSON.stringify(taskList));
   taskList = JSON.parse(localStorage.getItem('tasks'));
