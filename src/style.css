@@ -1,8 +1,7 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
-
 
 h1 {
   color: #959595;
@@ -70,6 +69,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   /* margin: 1em; */
   padding: 1em;
 }
