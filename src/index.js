@@ -1,37 +1,20 @@
 // import _ from 'lodash';
 import './style.css';
 import status from './script.js';
-
-const tasks = [
-  {
-    description: 'wash the dishes',
-    completed: false,
-    index: 0,
-  },
-
-  {
-    description: 'do the laundry',
-    completed: false,
-    index: 1,
-  },
-
-  {
-    description: 'wash the car',
-    completed: false,
-    index: 2,
-  },
-];
+import {
+  addItem, editItem, removeItem, clearCompleted,
+} from './script2.js';
 
 let taskList = JSON.parse(localStorage.getItem('tasks'));
 
 if (taskList === null) {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-  taskList = JSON.parse(localStorage.getItem('tasks'));
+  taskList = [];
 }
 
-taskList.forEach((element) => {
+const display = (element) => {
   const div = document.createElement('div');
   div.className = 'task';
+  div.id = element.index;
   const container = document.getElementById('list-container');
   container.appendChild(div);
   const div2 = document.createElement('div');
@@ -64,8 +47,53 @@ taskList.forEach((element) => {
     checkbox.checked = false;
   }
   const icon = document.createElement('i');
-  icon.className = 'ellipsis vertical icon';
-  div.appendChild(icon);
+  icon.className = 'ellipsis vertical icon check2';
+  const spam = document.createElement('spam');
+  spam.appendChild(icon);
+  div.appendChild(spam);
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'edit-item hidden';
+  div.appendChild(input);
+
+  const icon2 = document.createElement('i');
+  icon2.className = 'trash alternate outline icon check';
+  const spam2 = document.createElement('spam');
+  spam2.className = 'hidden';
+  spam2.appendChild(icon2);
+  div.appendChild(spam2);
   const hr = document.createElement('hr');
   container.appendChild(hr);
+
+  icon.addEventListener('click', () => {
+    editItem(spam, spam2, input, para, element, taskList);
+  });
+
+  icon2.addEventListener('click', () => {
+    removeItem(element, taskList);
+  });
+};
+
+taskList.forEach((element) => {
+  display(element);
+});
+
+document.getElementById('enter-icon').addEventListener('click', () => {
+  addItem(taskList, display);
+  document.querySelector('.new-item').value = '';
+  localStorage.setItem('tasks', JSON.stringify(taskList));
+  taskList = JSON.parse(localStorage.getItem('tasks'));
+  window.location.reload();
+});
+
+document.querySelector('.new-item').addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById('enter-icon').click();
+  }
+});
+
+document.querySelector('.button').addEventListener('click', () => {
+  clearCompleted(taskList);
+  window.location.reload();
 });

@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 h1 {
   color: #959595;
   font-size: 1.5em;
@@ -11,6 +16,14 @@ p {
 .cancel {
   text-decoration: line-through;
   color: #959595;
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.rotate:hover {
+  cursor: pointer;
 }
 
 body {
@@ -37,17 +50,33 @@ body {
 .new-item {
   margin: 1em;
   border: none;
-  width: 45vw;
+  width: 43.9vw;
   height: 1em;
   font-size: 1.2em;
-  color: #b5b5b5;
+  color: rgb(95, 93, 93);
+}
+
+.edit-item {
+  margin: 0.18em 0.9em;
+  border: none;
+  width: 43.9vw;
+  height: 1em;
+  font-size: 1.2em;
+  color: rgb(95, 93, 93);
+  background-color: inherit;
 }
 
 .task {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1em;
+
+  /* margin: 1em; */
+  padding: 1em;
+}
+
+.color {
+  background-color: yellow;
 }
 
 input:checked::after {
@@ -62,6 +91,10 @@ input:checked::after {
   cursor: pointer;
 }
 
+.check2:hover {
+  cursor: col-resize;
+}
+
 .div {
   display: flex;
   align-items: center;
@@ -73,7 +106,7 @@ input:checked::after {
 }
 
 .button {
-  width: 49vw;
+  width: 49.8vw;
   border: none;
   color: #b5b5b5;
   background-color: white;
@@ -81,6 +114,16 @@ input:checked::after {
   font-size: 1.2em;
 }
 
+.button:hover {
+  color: rgb(95, 93, 93);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 input:focus {
   outline: none;
+}
+
+.hidden {
+  display: none;
 }
