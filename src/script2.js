@@ -10,13 +10,27 @@ export function addItem(taskList, display) {
   display(element);
 }
 
-export function editItem(spam, spam2, input, para, element) {
+export function editItem(spam, spam2, input, para, element, taskList) {
   spam.classList.add('hidden');
   spam2.classList.remove('hidden');
   input.classList.remove('hidden');
   para.classList.add('hidden');
   input.value = element.description;
-  // document.querySelector('.task').classList.add('color')
+  document.getElementById(element.index).classList.add('color');
+  input.addEventListener('keyup', (event) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      element.description = input.value;
+      para.innerText = element.description;
+      localStorage.setItem('tasks', JSON.stringify(taskList));
+      taskList = JSON.parse(localStorage.getItem('tasks'));
+      spam.classList.remove('hidden');
+      spam2.classList.add('hidden');
+      input.classList.add('hidden');
+      para.classList.remove('hidden');
+      document.getElementById(element.index).classList.remove('color');
+    }
+  });
 }
 
 export function removeItem(element, taskList) {
@@ -33,6 +47,9 @@ export function clearCompleted(taskList) {
       return true;
     }
     return false;
+  });
+  taskList.forEach((element) => {
+    element.index = taskList.indexOf(element);
   });
   localStorage.setItem('tasks', JSON.stringify(taskList));
   taskList = JSON.parse(localStorage.getItem('tasks'));

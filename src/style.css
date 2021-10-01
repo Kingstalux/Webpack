@@ -63,6 +63,7 @@ body {
   height: 1em;
   font-size: 1.2em;
   color: rgb(95, 93, 93);
+  background-color: inherit;
 }
 
 .task {
@@ -114,8 +115,8 @@ input:checked::after {
 }
 
 .button:hover {
-  background-color: #b5b5b5;
-  color: white;
+  color: rgb(95, 93, 93);
+  text-decoration: underline;
   cursor: pointer;
 }
 

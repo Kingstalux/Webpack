@@ -14,6 +14,7 @@ if (taskList === null) {
 const display = (element) => {
   const div = document.createElement('div');
   div.className = 'task';
+  div.id = element.index;
   const container = document.getElementById('list-container');
   container.appendChild(div);
   const div2 = document.createElement('div');
@@ -46,7 +47,7 @@ const display = (element) => {
     checkbox.checked = false;
   }
   const icon = document.createElement('i');
-  icon.className = 'ellipsis vertical icon check2'
+  icon.className = 'ellipsis vertical icon check2';
   const spam = document.createElement('spam');
   spam.appendChild(icon);
   div.appendChild(spam);
@@ -54,21 +55,6 @@ const display = (element) => {
   input.type = 'text';
   input.className = 'edit-item hidden';
   div.appendChild(input);
-
-  input.addEventListener('keyup', (event) => {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      element.description = input.value;
-      // para.innerText = element.description
-      localStorage.setItem('tasks', JSON.stringify(taskList));
-      taskList = JSON.parse(localStorage.getItem('tasks'));
-      window.location.reload();
-      // spam.classList.remove('hidden')
-      // spam2.classList.add('hidden')
-      // input.classList.add('hidden')
-      // para.classList.remove('hidden')
-    }
-  });
 
   const icon2 = document.createElement('i');
   icon2.className = 'trash alternate outline icon check';
@@ -80,15 +66,14 @@ const display = (element) => {
   container.appendChild(hr);
 
   icon.addEventListener('click', () => {
-    editItem(spam, spam2, input, para, element);
+    editItem(spam, spam2, input, para, element, taskList);
   });
 
   icon2.addEventListener('click', () => {
     removeItem(element, taskList);
     localStorage.setItem('tasks', JSON.stringify(taskList));
     taskList = JSON.parse(localStorage.getItem('tasks'));
-    div.remove();
-    hr.remove();
+    window.location.reload();
   });
 };
 
@@ -101,6 +86,7 @@ document.getElementById('enter-icon').addEventListener('click', () => {
   document.querySelector('.new-item').value = '';
   localStorage.setItem('tasks', JSON.stringify(taskList));
   taskList = JSON.parse(localStorage.getItem('tasks'));
+  window.location.reload();
 });
 
 document.querySelector('.new-item').addEventListener('keyup', (event) => {
