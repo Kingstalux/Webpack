@@ -4,6 +4,7 @@ import status from './script.js';
 import { addItem } from './script2.js';
 import { editItem } from './script2.js';
 import { removeItem } from './script2.js';
+import { clearCompleted } from './script2.js';
 
 let taskList = JSON.parse(localStorage.getItem('tasks'));
 
@@ -114,5 +115,10 @@ document.querySelector('.new-item').addEventListener('keyup', function(event) {
     event.preventDefault();
     document.getElementById('enter-icon').click()
    }
+})
+
+document.querySelector('.button').addEventListener('click', () => {
+  clearCompleted(taskList)
+  window.location.reload()
 })
 

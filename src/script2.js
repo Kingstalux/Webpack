@@ -24,6 +24,16 @@ export function removeItem (element, taskList) {
     taskList.splice(i, 1)
     taskList.forEach(element => {
         element.index = taskList.indexOf(element)
-    });
-    
+    }); 
+}
+
+export function clearCompleted (taskList) {
+    taskList = taskList.filter((element) => {
+        if (element.completed !== true) {
+          return true;
+        }
+        return false;
+      });
+      localStorage.setItem('tasks', JSON.stringify(taskList));
+      taskList = JSON.parse(localStorage.getItem('tasks'));
 }

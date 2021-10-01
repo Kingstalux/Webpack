@@ -1,3 +1,9 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+
 h1 {
   color: #959595;
   font-size: 1.5em;
@@ -64,7 +70,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1em;
+  /* margin: 1em; */
+  padding: 1em;
 }
 
 .color {
@@ -98,12 +105,18 @@ input:checked::after {
 }
 
 .button {
-  width: 49vw;
+  width: 49.8vw;
   border: none;
   color: #b5b5b5;
   background-color: white;
   padding: 1em;
   font-size: 1.2em;
+}
+
+.button:hover {
+  background-color: #b5b5b5;
+  color: white;
+  cursor: pointer;
 }
 
 input:focus {
