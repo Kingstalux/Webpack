@@ -18,9 +18,10 @@ Users can clear the completed tasks by clicking on the button.  All the elements
 - Javascript
 - webpack
 
-## Demo
+## Live link
 
-[Demo page](http://localhost:8080/)
+[Live page](https://kingstalux.github.io/Webpack/)
+
 
 ## Getting Started
 
