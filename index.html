@@ -1,1 +1,32 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wbpack Exercise</title><script defer="defer" src="main.js"></script></head><body><h1>Hello webpack!</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <title>To Do List</title>
+<script defer src="main.js"></script></head>
+<body>
+
+    <section class="body">
+        <div class="heading">
+            <h1>Today's To Do</h1>
+            <i class="sync icon"></i>
+        </div>
+
+        <hr>
+        
+        <div>
+            <input type="text" placeholder="Add to your list..." class="new-item">
+            <i class="level down alternate icon rotate" id="enter-icon"></i>
+        </div>
+
+        <hr>
+    
+        <div id="list-container"></div>
+
+        <button type="button" class="button">Clear all completed</button>
+    </section>
+
+</body>
+</html>
