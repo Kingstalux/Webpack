@@ -6,4 +6,4 @@ const localstorageMock = {
   },
 };
 
-export default localStorageMock;
+export default localstorageMock;
