@@ -5,7 +5,7 @@
 import localStorageMock from '../_mocks_/localStorage.js';
 import removeItem from '../_mocks_/remove.js';
 
-describe('Add tasks to list', () => {
+describe('Remove tasks from list', () => {
   const taskList = [
     {
       description: 'Breaking Bad',

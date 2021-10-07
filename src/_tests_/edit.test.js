@@ -5,7 +5,7 @@
  import localStorageMock from '../_mocks_/localStorage.js';
  import editItem from '../_mocks_/edit.js';
  
- describe('Add tasks to list', () => {
+ describe('Edit tasks descriptions', () => {
    const taskList = [
      {
        description: 'Breaking Bad',
