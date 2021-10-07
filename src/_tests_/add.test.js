@@ -18,7 +18,8 @@ describe('Add tasks to list', () => {
 
   test('Should return an array with attached todo object', () => {
     document.body.innerHTML = '<input class="new-item" value="Complete the project">';
-    expect(addItem(taskList)).toHaveLength(2);
+    addItem(taskList);
+    expect(taskList).toHaveLength(2);
   });
 
   test('The new task completed status should be false', () => {
