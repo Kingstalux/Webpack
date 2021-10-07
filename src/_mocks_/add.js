@@ -1,6 +1,6 @@
-import localstorageMock from './localstorage.js';
+import localStorageMock from './localStorage.js';
 
-const addItem = (taskList) => {
+function addItem(taskList) {
   const newItem = document.querySelector('.new-item').value;
   const i = taskList.length;
   const element = {
@@ -9,9 +9,8 @@ const addItem = (taskList) => {
     index: i + 1,
   };
   taskList.push(element);
-  localstorageMock.setItem('data', taskList);
-  // display(element);
+  localStorageMock.setItem('data', taskList);
   return taskList;
-};
+}
 
 export default addItem;
