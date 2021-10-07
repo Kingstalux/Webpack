@@ -1,26 +1,16 @@
 import addItem from '../mock/add.js';
-import localstorageMock from '../mocks/localstorage.js';
+import localstorageMock from '../mock/localstorage.js';
 
 describe('Add tasks to list', () => {
-    taskList = []
-    test('should return an array of tasks with task object'), () => {
-      document.body.innerHTML = '<input class="new-item" value="Something">';
-      expect(addTask(arr)).toHaveLength(1);
-    }
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const taskList = [];
+  test('should return an array of tasks with task object', () => {
+    document.body.innerHTML = '<input class="new-item" value="Something">';
+    expect(addItem(taskList)).toHaveLength(1);
+  });
+  test('Local storage should be updated after adding new item', () => {
+    expect(localstorageMock.getItem('data')).toHaveLength(1);
+  });
+});
 
 // describe('Add to-do', () => {
 //     const arr = [];
